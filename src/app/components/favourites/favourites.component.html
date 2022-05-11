@@ -1,0 +1,6 @@
+
+<div class="row w-100 m-0">
+    <div *ngFor="let favourites of favMovies | async" class="col-sm-6 col-md-4 ">
+        <app-card [movie]="favourites"></app-card>
+    </div>     
+</div>

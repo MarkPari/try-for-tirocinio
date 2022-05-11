@@ -1,0 +1,17 @@
+<div *ngIf="movie" class="card" style="width: 18rem;">
+    <img (click)="onClick(movie.id)"  [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="card-img-top" alt="copertina">
+    <div appChange class="card-body">
+        <h3 class="card-title">{{movie.title | firstLetter}}</h3>
+        <p class="card-text">{{movie.overview}}</p>
+
+        <ng-container *ngIf="checkFilm(movie.id); else Add">
+            <a class="btn btn-primary" (click)="removeFromFavourites()">rem</a> 
+        </ng-container>
+        <ng-template #Add>
+            <a class="btn btn-primary" (click)="addFavourites()">add</a>
+        </ng-template>
+        
+
+    </div>
+    <ng-content></ng-content>
+</div>

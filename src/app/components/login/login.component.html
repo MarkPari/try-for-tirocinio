@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <form class="myCont" [formGroup]="logInForm" (ngSubmit)="login()">
+        <div class="d-flex flex-column mb-2">
+            <label position="floating">Username</label>
+            <input type="text" formControlName="username" />
+            <label position="floating">Password</label>
+            <input type="password" formControlName="password" />
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</div>
