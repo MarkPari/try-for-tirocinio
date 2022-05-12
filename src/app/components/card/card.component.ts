@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { MoviedbService } from 'src/app/services/moviedb.service';
 import { addFavourites, remFavourites } from 'src/app/store/actions/actionFav';
 import { selectFeatureCount } from 'src/app/store/selectors/selectorFavourites';
 import { Movie } from '../../models/movieDb';
@@ -17,7 +18,7 @@ export class CardComponent implements OnInit, OnDestroy {
   favMovies: Movie[] = [];
   isFavourites: boolean = false;
   subscription: Subscription;
-  constructor(private store: Store<Rootstate>) { 
+  constructor(private store: Store<Rootstate>, private myMoive: MoviedbService) { 
     this.subscription=  this.store.select(selectFeatureCount).subscribe(res => this.favMovies=res)
   }
 
@@ -36,4 +37,6 @@ export class CardComponent implements OnInit, OnDestroy {
   addFavourites = () => this.movie && this.store.dispatch(addFavourites({newMovie: this.movie}));
 
   removeFromFavourites = () => this.movie && this.store.dispatch(remFavourites({id: this.movie.id}));
+
+  singleMovie = (movie:Movie) => this.myMoive.setSingleMovie(movie);
 }

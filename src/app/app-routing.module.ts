@@ -6,6 +6,7 @@ import { MoviedbService } from './services/moviedb.service';
 import { MoviesResolverService } from './services/movieDb.resolver.services';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import { SinglePageComponent } from './components/single-page/single-page.component';
 
 const routes: Routes = [{
   path: 'Home',
@@ -13,6 +14,9 @@ const routes: Routes = [{
   resolve: {
     myMovies: MoviesResolverService
   }
+},{
+  path: 'Home/:id',
+  component: SinglePageComponent
 },{
   path: 'Favourites',
   component: FavouritesComponent,

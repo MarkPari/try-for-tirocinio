@@ -26,6 +26,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { LoaderService } from './services/loader.service';
+import { SinglePageComponent } from './components/single-page/single-page.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { LoaderService } from './services/loader.service';
     ChangeDirective,
     FirstLetterPipe,
     LoaderComponent,
+    SinglePageComponent,
     //LoginComponent
   ],
   imports: [

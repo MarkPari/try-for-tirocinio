@@ -1,0 +1,30 @@
+<div *ngIf="movie" class="d-flex justify-content-space-between">
+    
+    
+    <img class="myWidth" [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="poster">
+    
+    <div class="p-2">
+        <h1 class="text-center">{{movie.title}}</h1>
+        <div class="d-flex flex-row">
+            <div *ngFor="let genre of genres" class="mx-2">
+                <p>{{genre}}</p>
+            </div>
+            
+        </div>
+        <p>{{movie.overview}}</p>
+
+        <div class="d-flex justify-content-center mt-3">
+            <iframe *ngIf="trailer && trailer.length > 0" className="clickedVideo"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="video"
+                allowTransparency
+                width="550" height="445"
+                [src]="youTube()">
+            </iframe>
+        </div>
+    </div>
+    
+
+</div>
