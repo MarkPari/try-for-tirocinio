@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, AfterViewInit } from '@angular/core';
 import { MoviedbService } from '../../services/moviedb.service';
 import { Movie } from '../../../../../server/src/models/movieDb';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+import { ViewcontrefDirective } from 'src/app/directives/viewcontref.directive';
+import { ViewcomponentComponent } from '../viewcomponent/viewcomponent.component';
 
 @Component({
   selector: 'app-single-page',
@@ -13,8 +15,10 @@ export class SinglePageComponent implements OnInit {
   movie: Movie|undefined;
   trailer: string = "";
   genres: Array<string> = [];
+
   constructor(private movieDb: MoviedbService, private sanitizer : DomSanitizer,
     private location: Location) { }
+
   
   ngOnInit(): void {
     this.movie = this.movieDb.getSingleMovie();
@@ -37,5 +41,6 @@ export class SinglePageComponent implements OnInit {
   }
   
   back = () => this.location.back();
+  
 
 }

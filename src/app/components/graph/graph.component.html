@@ -1,1 +1,4 @@
-<canvas [ngStyle]="{display: ( this.fav && this.fav.length>0) ? 'block' : 'none'}"  class="canvas" #myChart></canvas>
+<div [ngStyle]="{display: ( this.fav && this.fav.length>0) ? 'block' : 'none'}">
+    <h3 class="text-center">Indice di gradimento</h3>
+    <canvas class="canvas" #myChart></canvas>
+</div>

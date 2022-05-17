@@ -9,3 +9,12 @@
 svg {
     cursor: pointer;
 }
+
+.myButton {
+    border-radius: 5%;
+    border: 1px solid gray;
+    background-color: white;
+    &:hover {
+        background-color: lightgray;
+    }
+}

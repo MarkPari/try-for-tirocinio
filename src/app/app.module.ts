@@ -31,6 +31,8 @@ import { SwiperModule } from 'swiper/angular';
 import { SliderComponent } from './components/slider/slider.component';
 import { GraphComponent } from './components/graph/graph.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ViewcontrefDirective } from './directives/viewcontref.directive';
+import { ViewcomponentComponent } from './components/viewcomponent/viewcomponent.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { CookieService } from 'ngx-cookie-service';
     SinglePageComponent,
     SliderComponent,
     GraphComponent,
+    ViewcontrefDirective,
+    ViewcomponentComponent,
     //LoginComponent
   ],
   imports: [
