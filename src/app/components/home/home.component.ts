@@ -15,11 +15,14 @@ export class HomeComponent implements OnInit, AfterViewInit  {
 @ViewChild('searchRef', {static: true}) searchElementRef:ElementRef|undefined;
   myData: any;
   movies: Movie[] = [];
+  currentPage: number=1;
   filterMovies: Movie[] = [];
   trailer: string = "";
   searchTitle: string = "";
+  
 
-  constructor(private movieDb: MoviedbService, private sanitizer : DomSanitizer, private route: ActivatedRoute) {}
+  constructor(private movieDb: MoviedbService, private sanitizer : DomSanitizer, 
+    private route: ActivatedRoute) { }
   
 
   ngOnInit(): void {
@@ -35,6 +38,7 @@ export class HomeComponent implements OnInit, AfterViewInit  {
   getFilmResolver = () =>  this.movies = this.route.snapshot.data['myMovies'].results
 
   getMovies = () => this.movieDb.getFilms().subscribe(data => {
+    
     return this.movies=data.results}) //this.movies=movie //
 
   getTrailer = (id:number) => this.movieDb.getTrailer(id).subscribe(data=>this.trailer = 'https://www.youtube.com/embed/' +
@@ -47,5 +51,11 @@ export class HomeComponent implements OnInit, AfterViewInit  {
   }
 
   search = (search: string) => this.filterMovies = this.movies.filter(({title}) => title.toLowerCase().includes(search.toLowerCase()));
+
+  pagination = (page: number) => this.movieDb.getFilmId(page).subscribe(data => {
+    this.currentPage=data.page;
+    this.movies=data.results;
+  });
+
   
 }

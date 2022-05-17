@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoviedbService } from '../../services/moviedb.service';
 import { Movie } from '../../../../../server/src/models/movieDb';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-single-page',
@@ -12,7 +13,8 @@ export class SinglePageComponent implements OnInit {
   movie: Movie|undefined;
   trailer: string = "";
   genres: Array<string> = [];
-  constructor(private movieDb: MoviedbService, private sanitizer : DomSanitizer) { }
+  constructor(private movieDb: MoviedbService, private sanitizer : DomSanitizer,
+    private location: Location) { }
   
   ngOnInit(): void {
     this.movie = this.movieDb.getSingleMovie();
@@ -33,5 +35,7 @@ export class SinglePageComponent implements OnInit {
   youTube() {
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.trailer);
   }
+  
+  back = () => this.location.back();
 
 }

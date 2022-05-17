@@ -27,6 +27,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { LoaderService } from './services/loader.service';
 import { SinglePageComponent } from './components/single-page/single-page.component';
+import { SwiperModule } from 'swiper/angular';
+import { SliderComponent } from './components/slider/slider.component';
+import { GraphComponent } from './components/graph/graph.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,8 @@ import { SinglePageComponent } from './components/single-page/single-page.compon
     FirstLetterPipe,
     LoaderComponent,
     SinglePageComponent,
+    SliderComponent,
+    GraphComponent,
     //LoginComponent
   ],
   imports: [
@@ -60,9 +66,11 @@ import { SinglePageComponent } from './components/single-page/single-page.compon
     MatInputModule,
     LoginModule,
     StoreModule.forRoot(Store),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SwiperModule
   ],
   providers: [
+    CookieService,
     LoaderService,{ 
     provide: HTTP_INTERCEPTORS, 
     useClass: SimpleInterceptorInterceptor, 

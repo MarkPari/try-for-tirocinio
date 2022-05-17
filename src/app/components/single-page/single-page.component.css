@@ -1,0 +1,12 @@
+.myHeight {
+  height: 600px;
+}
+
+.myWidth {
+  max-width: 400px;
+}
+
+svg {
+  cursor: pointer;
+}
+/*# sourceMappingURL=single-page.component.css.map */

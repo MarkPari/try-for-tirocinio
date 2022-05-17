@@ -1,0 +1,5 @@
+<swiper *ngIf="movies" [config]="config" class="mySwiper mt-2">
+    <ng-template *ngFor="let movie of movies" swiperSlide>
+        <img class="img" [src]="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path"  alt="poster"/>
+    </ng-template>
+</swiper>

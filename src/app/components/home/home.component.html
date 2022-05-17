@@ -1,4 +1,4 @@
-
+<app-slider *ngIf="movies" [movies]="movies.slice(0,6)"></app-slider>
 <div class="d-flex justify-content-center mt-5">
     <!-- <input type="text" placeholder="search..." [(ngModel)]="searchTitle" (input)="search(searchTitle)" #searchRef/> -->
     
@@ -22,9 +22,22 @@
         </iframe>
     </div>
     
-    <div *ngFor="let movie of searchTitle.length>0 ? filterMovies : movies" class="col-sm-6 col-md-4 ">
+    <div *ngFor="let movie of searchTitle.length>0 ? filterMovies : movies" class="col-sm-6 col-md-4 col-lg-3 ">
         <app-card class="d-flex justify-content-center" (emitter)="getTrailer($event)" [movie]="movie">
             <p>{{trailer}}</p>
         </app-card>
     </div>
+
+
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-5">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" *ngIf="currentPage>1" (click)="pagination(currentPage-1)">Previous</a></li>
+            <li class="page-item"><a class="page-link" (click)="pagination(1)">1</a></li>
+            <li class="page-item"><a class="page-link" (click)="pagination(2)">2</a></li>
+            <li class="page-item"><a class="page-link" (click)="pagination(3)">3</a></li>
+            <li class="page-item"><a class="page-link" (click)="pagination(4)">4</a></li>
+            <li class="page-item"><a class="page-link" *ngIf="currentPage<4" (click)="pagination(currentPage+1)">Next</a></li>
+        </ul>
+    </nav>
+
 </div>
